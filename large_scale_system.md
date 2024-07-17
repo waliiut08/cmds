@@ -3,6 +3,13 @@ Requirement:
  * non-functional (latency, consistency, realtime)
  * extended requirements
 
+How to Approach System Design Question in an Interview:
+Templates:
+* ![image](https://github.com/user-attachments/assets/5a27be94-49da-4f2d-ae8c-107f7c50e8ca) 
+* https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery
+* https://leetcode.com/discuss/interview-question/system-design/5073436/System-Design-Template
+
+
 steps:
 * capacity estimation, QPS, storage, Bandwidth
 * Number of total machines required
