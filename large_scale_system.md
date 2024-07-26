@@ -1,11 +1,19 @@
 Requirement:
- * functional
- * non-functional (latency, consistency, realtime)
- * extended requirements
+ * Functional Requirements
+    - out-of-scope
+ * Non-functional Requirements (scaling + special cases)
+    - out-of-scope
+ * Apis/Data-Flow
+    - Core Entities
+    - Schema Design
+ * High Level Design ( serves Function requirements)
+ * Deep Dive ( serves Non-Function requirements)
+    - Back of the Envelope Estimation to calculate number of servers/ databses/ sharding needed
 
 How to Approach System Design Question in an Interview:
 Templates:
-* ![image](https://github.com/user-attachments/assets/5a27be94-49da-4f2d-ae8c-107f7c50e8ca) 
+
+![image](https://github.com/user-attachments/assets/5a27be94-49da-4f2d-ae8c-107f7c50e8ca) 
 * https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery
 * https://leetcode.com/discuss/interview-question/system-design/5073436/System-Design-Template
 
