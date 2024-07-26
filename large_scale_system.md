@@ -1,33 +1,53 @@
-Requirement:
- * Functional Requirements
-    - out-of-scope
- * Non-functional Requirements (scaling + special cases)
-    - out-of-scope
- * Apis/Data-Flow
-    - Core Entities
-    - Schema Design
- * High Level Design ( serves Function requirements)
- * Deep Dive ( serves Non-Function requirements)
-    - Back of the Envelope Estimation to calculate number of servers/ databses/ sharding needed
+### Steps:
+    - Functional Requirements
+    
+    - Non-functional Requirements (scaling + special cases)
+    
+    - Apis/Data-Flow
+    
+    - High Level Design ( serves Function requirements)
+    
+    - Deep Dive ( serves Non-Function requirements)
+
 
 How to Approach System Design Question in an Interview:
 Templates:
 
 ![image](https://github.com/user-attachments/assets/5a27be94-49da-4f2d-ae8c-107f7c50e8ca) 
-* https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery
-* https://leetcode.com/discuss/interview-question/system-design/5073436/System-Design-Template
+https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery
+https://leetcode.com/discuss/interview-question/system-design/5073436/System-Design-Template
 
 
-steps:
-* capacity estimation, QPS, storage, Bandwidth
-* Number of total machines required
-* CAP theorem
-* high level api 
-* load balancing
-* Task queue and central status checkpoints   
-* Caching
-* Data partition/ sharding
-* Fault tollerant and replication                 
+### Functional Requirement: [ pick 2 or 3 most important features]
+    - User related: who are the users/ how they will be served
+    - User Scale: Daily Actiuve User (DAU), Lar sclae Data reaqd/write?
+    - basic algorithm to serve the problem
+
+    -- [ Out of Scope ]
+  
+### Non-functional Requirements (scaling + special cases): [ pick 2 or 3 cases]
+    - CAP Theorem : Strong Consistency vs (Availability and Eventual Consistency)  *** Different parts of the system might have different Consistency and Availability 
+    - Read/ Write Ratio: read heavy or write heavy system. Must choose different components -database/caching layer/broker/sharding based on that
+    - low latecy: need to maintain low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
+    - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
+    - Fault Tolerance
+    - Data Partitioning/ Sharding
+
+    
+    - number of servers/ databases/ caches calculation based on estimation
+    - Caching for best user experience: if data is static then caching is always helping (LRU)
+    - CDN
+    - Message Broker: for streaming, queue, even-driven system, messageing system, etc
+    - analytics aggregator: apache spark, flink (this system receives data from brokers-Kafka )
+    - batch processing (needs input file to batch process and generates output file)
+    - loggin, monitoring
+    - Load balancing
+    - rate limiting
+
+    -- [ Out of Scope ]
+    
+
+            
 [Designing Data Intensive Application](http://xfido.com/pdf/designing-data-intensive-applications.pdf)       
 [mit course link](http://nil.csail.mit.edu/6.824/2018/schedule.html?fbclid=IwAR2R-VKSo2hGhDqVE7veo7SWoRK62h3eKrOxliz6yRgSSrhbsuBzA1bYn7o)       
 [DDIA youtube](https://www.youtube.com/watch?v=PdtlXdse7pw&list=PL4KdJM8LzAMecwInbBK5GJ3Anz-ts75RQ)         
