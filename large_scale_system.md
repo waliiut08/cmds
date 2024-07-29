@@ -30,6 +30,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Read/ Write Ratio: read heavy or write heavy system. Must choose different components -database/caching layer/broker/sharding based on that
     - low latecy: need to maintain low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
     - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
+    - if user goes offline
     - Fault Tolerance
     - Data Partitioning/ Sharding
 
