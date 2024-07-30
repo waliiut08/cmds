@@ -34,7 +34,8 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Fault Tolerance
     - Data Partitioning/ Sharding
 
-    
+    - encoding/decoding data
+    - data encryption
     - number of servers/ databases/ caches calculation based on estimation
     - Caching for best user experience: if data is static then caching is always helping (LRU)
     - CDN
