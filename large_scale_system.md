@@ -31,7 +31,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - low latecy: need to maintain low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
     - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
     - if user goes offline
-    - Fault Tolerance
+    - Fault Tolerance( if server, database shard, network goes down)
     - Data Partitioning/ Sharding
 
     - encoding/decoding data
