@@ -32,7 +32,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
     - if user goes offline
     - Fault Tolerance( if server, database shard, network goes down)
-    - Data Partitioning/ Sharding
+    - Data Partitioning/ Sharding and replication.
 
     - encoding/decoding data
     - data encryption
