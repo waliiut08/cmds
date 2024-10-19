@@ -255,7 +255,9 @@ Client  -> Gateway server -> load balancer --> clusters --> database
     * AWS Batch
 
 ### Batch vs Stream Processing - What's the Difference? When to use what?
-    * https://blog.algomaster.io/p/batch-processing-vs-stream-processing
+    * [link](https://blog.algomaster.io/p/batch-processing-vs-stream-processing)
+    
+    
 
 ### Bloom Filters      
  * n hash functions map to k positions             
