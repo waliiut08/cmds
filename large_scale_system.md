@@ -255,7 +255,7 @@ Client  -> Gateway server -> load balancer --> clusters --> database
     * AWS Batch
 
 ### Batch vs Stream Processing - What's the Difference? When to use what?
-    * [Batch vs Stream Processing](https://www.neovasolutions.com/2020/07/20/apache-kafka-a-quick-overview/)
+[Batch vs Stream Processing](https://www.neovasolutions.com/2020/07/20/apache-kafka-a-quick-overview/)
     
     
 
