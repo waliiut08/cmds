@@ -250,6 +250,13 @@ Client  -> Gateway server -> load balancer --> clusters --> database
    * Redis
    * Kafka (pub/sub)
 
+### Batch Processing
+    * Apache Hadoop (uses MapReduce to split large datasets across distributed clusters, process data in parallel and aggregate the results)
+    * AWS Batch
+
+### Batch vs Stream Processing - What's the Difference? When to use what?
+    * https://blog.algomaster.io/p/batch-processing-vs-stream-processing
+
 ### Bloom Filters      
  * n hash functions map to k positions             
  * each hash will give one value from between 0.. k value and we will set that position to 1            
