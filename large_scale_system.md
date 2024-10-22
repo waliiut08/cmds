@@ -49,7 +49,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Locking Meckanism(redis Lock, SQL DB row lock during read-write, manual locking by creating a table in No-SQL DB) to handle ensure consistency.
     - Encoding/decoding data
     - number of servers/ databases/ caches calculation based on estimation
-    - Caching for best user experience: if data is static then caching is always helping (LRU)
+    - Caching for best user experience: if data is static then caching is always helpful (LRU)
     - CDN
     - Message Broker: for streaming, queue, even-driven system, messageing system, etc
     - Analytics aggregator: apache spark, flink (this system receives data from brokers-Kafka )
