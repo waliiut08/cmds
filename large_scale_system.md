@@ -19,6 +19,9 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
 
 
 ### Functional Requirement: [ pick 2 or 3 most important features]
+    - What part of the system to design?
+    - What are the steps of the Request flow from user to the db and Respose from the DB to the user.
+    - 
     - User related: who are the users/ how they will be served
     - User Scale: Daily Actiuve User (DAU), Lar sclae Data reaqd/write?
     - basic algorithm to serve the problem
@@ -30,21 +33,30 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Read/ Write Ratio: read heavy or write heavy system. Must choose different components -database/caching layer/broker/sharding based on that
     - low latecy: need to maintain low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
     - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
+    - estimation:
+        1) read throughput, write throughput (incoming read/write request per second)
+        2) backend servers needed to handle requests request
+        3) storage needed to write all data
+                    
     - if user goes offline
     - Fault Tolerance( if server, database shard, network goes down)
     - Data Partitioning/ Sharding and replication.
-
-    - encoding/decoding data
-    - data encryption
+    - Backend system Security / DDoS attack / running user code, query in secured environment
+    - Encryption of user personal data/location/credit card info etc.
+    - Concurrency in request handling to maintain Consistency:
+        1) in server level(consistency to handle to book a ticket by servers)
+        2) in each device level (issue in multithreading operation in same exact time ex: unique key generations by same device)
+    - Locking Meckanism(redis Lock, SQL DB row lock during read-write, manual locking by creating a table in No-SQL DB) to handle ensure consistency.
+    - Encoding/decoding data
     - number of servers/ databases/ caches calculation based on estimation
     - Caching for best user experience: if data is static then caching is always helping (LRU)
     - CDN
     - Message Broker: for streaming, queue, even-driven system, messageing system, etc
-    - analytics aggregator: apache spark, flink (this system receives data from brokers-Kafka )
-    - batch processing (needs input file to batch process and generates output file)
-    - loggin, monitoring
+    - Analytics aggregator: apache spark, flink (this system receives data from brokers-Kafka )
+    - Batch processing (needs input file to batch process and generates output file)
+    - Loggin, Monitoring
     - Load balancing
-    - rate limiting
+    - Rate limiting
 
     -- [ Out of Scope ]
     
