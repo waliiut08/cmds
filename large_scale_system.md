@@ -153,7 +153,7 @@ youtube
 | 1M users| | ||
 | 1M users| | ||
 
-### DB Read/Write Ration:
+### Read/Write Ratio of Different Databases:
 https://chatgpt.com/canvas/shared/67b77b9987d88191b49b0fc54c185608
 ### **Overview**
 
