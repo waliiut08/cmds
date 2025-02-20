@@ -156,7 +156,20 @@ youtube
 ### Read/Write Ratio of Different Databases:
 https://chatgpt.com/canvas/shared/67b77b9987d88191b49b0fc54c185608
 ### **Overview**
+---
+### **Summary Table**
 
+| Database                   | Max Writes/sec          | Max Reads/sec            | Scaling Model                   |
+| -------------------------- | ----------------------- | ------------------------ | ------------------------------- |
+| **DynamoDB**               | \~1MB/s per partition   | \~3MB/s per partition    | Auto-sharding                   |
+| **MySQL/PostgreSQL (RDS)** | 3K-5K (single instance) | 10K+ (single instance)   | Read replicas                   |
+| **Aurora (AWS)**           | \~200K                  | Millions (with replicas) | Read replicas                   |
+| **MongoDB**                | 10K-50K (single node)   | \~100K+                  | Sharding                        |
+| **Cassandra**              | 100K+ per node          | 50K+ per node            | Linear scalability              |
+| **Redis**                  | 500K+                   | 1M-2M+                   | In-memory, clustered            |
+| **Spanner**                | 10K per node            | 100K per node            | Strongly consistent, horizontal |
+
+---
 This report provides a comparative analysis of the read and write performance of various databases, including SQL and NoSQL solutions. It highlights their capabilities in handling transactions, scalability, and real-time processing.
 
 ### **1. Amazon DynamoDB (NoSQL)**
@@ -253,22 +266,6 @@ This report provides a comparative analysis of the read and write performance of
 - Multi-region replication ensures strong consistency
 
 **Scaling:** True horizontal scaling while maintaining ACID compliance
-
----
-
-### **Summary Table**
-
-| Database                   | Max Writes/sec          | Max Reads/sec            | Scaling Model                   |
-| -------------------------- | ----------------------- | ------------------------ | ------------------------------- |
-| **DynamoDB**               | \~1MB/s per partition   | \~3MB/s per partition    | Auto-sharding                   |
-| **MySQL/PostgreSQL (RDS)** | 3K-5K (single instance) | 10K+ (single instance)   | Read replicas                   |
-| **Aurora (AWS)**           | \~200K                  | Millions (with replicas) | Read replicas                   |
-| **MongoDB**                | 10K-50K (single node)   | \~100K+                  | Sharding                        |
-| **Cassandra**              | 100K+ per node          | 50K+ per node            | Linear scalability              |
-| **Redis**                  | 500K+                   | 1M-2M+                   | In-memory, clustered            |
-| **Spanner**                | 10K per node            | 100K per node            | Strongly consistent, horizontal |
-
----
 
 ### **Conclusion**
 
