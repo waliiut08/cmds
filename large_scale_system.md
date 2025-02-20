@@ -153,6 +153,140 @@ youtube
 | 1M users| | ||
 | 1M users| | ||
 
+### DB Read/Write Ration:
+https://chatgpt.com/canvas/shared/67b77b9987d88191b49b0fc54c185608
+### **Overview**
+
+This report provides a comparative analysis of the read and write performance of various databases, including SQL and NoSQL solutions. It highlights their capabilities in handling transactions, scalability, and real-time processing.
+
+### **1. Amazon DynamoDB (NoSQL)**
+
+**Write Performance:**
+
+- Provisioned mode: Up to 1,000 WCU per partition (\~1MB/s)
+- On-demand mode: Scales automatically but limited to 1MB/s per partition
+
+**Read Performance:**
+
+- Strongly consistent: 1 RCU = 4KB read
+- Eventually consistent: 1 RCU = 8KB read
+- Max per partition: \~3,000 RCU (\~3MB/s)
+
+**Scaling:** Horizontal, adds partitions dynamically
+
+---
+
+### **2. Amazon RDS (SQL - MySQL/PostgreSQL)**
+
+**Write Performance:**
+
+- Single-instance: 3,000-5,000 writes/sec (depends on IOPS & instance size)
+- Aurora (AWS scalable SQL DB): Up to 200,000 writes/sec
+
+**Read Performance:**
+
+- Single-instance: \~10,000 reads/sec
+- Aurora Read Replicas: Scale to millions of reads/sec
+
+**Scaling:** Read replicas for read scaling, limited write scalability
+
+---
+
+### **3. MongoDB (NoSQL - Document DB)**
+
+**Write Performance:**
+
+- Single node: 10,000-50,000 writes/sec (depends on indexing and hardware)
+- Sharded cluster: Scales to millions of writes/sec
+
+**Read Performance:**
+
+- Single node: \~100,000 reads/sec
+- Read replicas: Scale reads horizontally to millions/sec
+
+**Scaling:** Horizontal via sharding and replication
+
+---
+
+### **4. Apache Cassandra (NoSQL - Wide Column Store)**
+
+**Write Performance:**
+
+- Designed for high writes (\~100,000+ writes/sec per node)
+- Scales linearly with more nodes (e.g., 10 nodes → 1M+ writes/sec)
+
+**Read Performance:**
+
+- Single node: \~50,000+ reads/sec
+- Requires tuning for read-heavy workloads
+
+**Scaling:** Fully distributed, linear scalability (optimized for write-heavy applications)
+
+---
+
+### **5. Redis (In-Memory Key-Value Store)**
+
+**Write Performance:**
+
+- Single instance: \~500,000+ writes/sec
+- Cluster mode: Scales to millions of writes/sec
+
+**Read Performance:**
+
+- Single instance: \~1-2 million reads/sec
+- Read replicas enhance scalability
+
+**Scaling:** Horizontal scaling via sharding & clustering
+
+---
+
+### **6. Google Spanner (Distributed SQL)**
+
+**Write Performance:**
+
+- \~10,000 writes/sec per node
+- Strong consistency with horizontal scaling
+
+**Read Performance:**
+
+- \~100,000 reads/sec per node
+- Multi-region replication ensures strong consistency
+
+**Scaling:** True horizontal scaling while maintaining ACID compliance
+
+---
+
+### **Summary Table**
+
+| Database                   | Max Writes/sec          | Max Reads/sec            | Scaling Model                   |
+| -------------------------- | ----------------------- | ------------------------ | ------------------------------- |
+| **DynamoDB**               | \~1MB/s per partition   | \~3MB/s per partition    | Auto-sharding                   |
+| **MySQL/PostgreSQL (RDS)** | 3K-5K (single instance) | 10K+ (single instance)   | Read replicas                   |
+| **Aurora (AWS)**           | \~200K                  | Millions (with replicas) | Read replicas                   |
+| **MongoDB**                | 10K-50K (single node)   | \~100K+                  | Sharding                        |
+| **Cassandra**              | 100K+ per node          | 50K+ per node            | Linear scalability              |
+| **Redis**                  | 500K+                   | 1M-2M+                   | In-memory, clustered            |
+| **Spanner**                | 10K per node            | 100K per node            | Strongly consistent, horizontal |
+
+---
+
+### **Conclusion**
+
+The choice of database depends on the specific use case:
+
+- **For high write workloads**, **Cassandra** or **DynamoDB** are ideal.
+- **For high read performance**, **Redis** or **MongoDB** provide excellent scalability.
+- **For SQL workloads requiring strong consistency**, **Google Spanner** or **Aurora** are top choices.
+
+Proper database selection ensures optimal application performance, cost efficiency, and reliability.
+
+---
+
+**Prepared by:** Wali Bhuiyan
+
+
+
+
 ### BASE (nosql database)     
 * Basically available
 * Soft state
