@@ -35,12 +35,13 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
     - estimation:
         1) read throughput, write throughput (incoming read/write request per second)
-        2) backend servers needed to handle requests request
+        2) number of backend servers needed to handle requests request
         3) storage needed to write all data
                     
     - if user goes offline
     - Fault Tolerance( if server, database shard, network goes down)
     - Data Partitioning/ Sharding and replication.
+    - Idempotency (Consider single event when multiple events are requested: multiple clicks to do transaction, ad-click, checkout button click, etc)
     - Backend system Security / DDoS attack / running user code, query in secured environment
     - Encryption of user personal data/location/credit card info etc.
     - Concurrency in request handling to maintain Consistency:
@@ -48,7 +49,6 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
         2) in each device level (issue in multithreading operation in same exact time ex: unique key generations by same device)
     - Locking Meckanism(redis Lock, SQL DB row lock during read-write, manual locking by creating a table in No-SQL DB) to handle ensure consistency.
     - Encoding/decoding data
-    - number of servers/ databases/ caches calculation based on estimation
     - Caching for best user experience: if data is static then caching is always helpful (LRU)
     - CDN
     - Message Broker: for streaming, queue, even-driven system, messageing system, etc
