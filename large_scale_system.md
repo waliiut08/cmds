@@ -21,7 +21,6 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
 ### Functional Requirement: [ pick 2 or 3 most important features]
     - What part of the system to design?
     - What are the steps of the Request flow from user to the db and Respose from the DB to the user.
-    - 
     - User related: who are the users/ how they will be served
     - User Scale: Daily Actiuve User (DAU), Lar sclae Data reaqd/write?
     - basic algorithm to serve the problem
@@ -29,34 +28,66 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     -- [ Out of Scope ]
   
 ### Non-functional Requirements (scaling + special cases): [ pick 2 or 3 cases]
+    - Microservice Architecture to handle scaling in different traffic, read, writes, logic, etc. 
     - CAP Theorem : Strong Consistency vs (Availability and Eventual Consistency)  *** Different parts of the system might have different Consistency and Availability 
     - Read/ Write Ratio: read heavy or write heavy system. Must choose different components -database/caching layer/broker/sharding based on that
-    - low latecy: need to maintain low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
-    - popular event/ peak hour/ celebrity user/ hot server/ hot shard/ etc
+    - Low Latecy: low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
+    - Popular Event/ Peak hour/ Celebrity user/ Hot server/ Hot shard/ etc
+    - Idempotency (Consider single event when multiple events are requested: multiple clicks to do transaction, ad-click, checkout button click, etc)
     - estimation:
         1) read throughput, write throughput (incoming read/write request per second)
         2) number of backend servers needed to handle requests request
         3) storage needed to write all data
-                    
-    - if user goes offline
+
+
     - Fault Tolerance( if server, database shard, network goes down)
-    - Data Partitioning/ Sharding and replication.
-    - Idempotency (Consider single event when multiple events are requested: multiple clicks to do transaction, ad-click, checkout button click, etc)
-    - Backend system Security / DDoS attack / running user code, query in secured environment
+    - if user goes offline
+
+
+    - push vs pull mechanism to fan-out data
+    - Polling, Long Lolling (not-persistent)
+    - Websocket (persistent connections, bi-directional)
+    - Server Sent Event (persistent connections)
+    - WebRtc (peer to peer connections)
+
+
+    - Message Queue to receive messages asynchronosly: kafka, amazon SQS, rabbit MQ
+    - Event Streaming for logging system, event stream handling, etc: Kafka, Kinesis, etc
+    - pub/sub
+    - CDC (Change Data Capture) to forward the event of any change of data in the DB. (primary DB -> Elastic Search)
+
+
+    - Analytics aggregator to aggregate data in real-time: apache Spark, Flink (this system receives data from brokers-Kafka )
+    - Batch processing to aggregate data, process writes in batch using chron job or scheduler in every n (5, 10, 15, 60 minutes, 1 day, 1 week, etc) minutes (needs input file to batch process and generates output file)
+    - Loggin, Monitoring, health check
+
+    
+    - System Security / DDoS attack / running user code, query in secured environment
+    - Rate limiting to save servers, databases, detect spammers, etc: fixed time window (minute 1, minute 2, etc), sliding window, etc
     - Encryption of user personal data/location/credit card info etc.
+
+    
     - Concurrency in request handling to maintain Consistency:
         1) in server level(consistency to handle to book a ticket by servers)
         2) in each device level (issue in multithreading operation in same exact time ex: unique key generations by same device)
     - Locking Meckanism(redis Lock, SQL DB row lock during read-write, manual locking by creating a table in No-SQL DB) to handle ensure consistency.
-    - Encoding/decoding data
+
+
+    - SQL/ No-SQL/ ACID property/ Availability vs Consistency / Read Heavy system/ write heavy system/ What kind of indexing needed (geo hash, full text inverted index)/ Row Locking
+    - Data Partitioning/ Sharding and replication.
     - Caching for best user experience: if data is static then caching is always helpful (LRU)
     - CDN
-    - Message Broker: for streaming, queue, even-driven system, messageing system, etc
-    - Analytics aggregator: apache spark, flink (this system receives data from brokers-Kafka )
-    - Batch processing (needs input file to batch process and generates output file)
-    - Loggin, Monitoring
-    - Load balancing
-    - Rate limiting
+    - Encoding/decoding data
+    - compress files specially media files(images, videos)
+    - create file with different resolution to serve users in different scenarios(poor network, mobile network, low bandwith, etc)
+    - deduplication of data
+    
+
+    - Load balancing: Zoo Keeper - smart load balancer, uses heart bit mechanism to check if the machines are running fine, etc
+    - Consistent Hashing (best in any situation: stateful, stateless, adding/removing servers, etc)
+    - Round Robin (Stateless system)
+    - Hash Based (Stateful): poor in handling changes (add/remove servers)
+    
 
     -- [ Out of Scope ]
     
