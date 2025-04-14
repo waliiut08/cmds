@@ -82,6 +82,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - CDN
     - Encoding/decoding data
     - compress files specially media files(images, videos)
+    - upload huge files by chunking (resumeable uploads)
     - create file with different resolution to serve users in different scenarios(poor network, mobile network, low bandwith, etc)
     - deduplication of data
     
