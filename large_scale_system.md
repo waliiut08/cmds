@@ -70,7 +70,10 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Concurrency in request handling to maintain Consistency:
         1) in server level(consistency to handle to book a ticket by servers)
         2) in each device level (issue in multithreading operation in same exact time ex: unique key generations by same device)
-    - Locking Meckanism(redis Lock, SQL DB row lock during read-write, manual locking by creating a table in No-SQL DB) to handle ensure consistency.
+    - Locking Meckanism
+        1) redis Lock with TTL
+        2) SQL DB row lock during read-write
+        3) Dynamoc DB TTL for rows
 
 
     - SQL/ No-SQL/ ACID property/ Availability vs Consistency / Read Heavy system/ write heavy system/ What kind of indexing needed (geo hash, full text inverted index)/ Row Locking
