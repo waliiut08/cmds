@@ -31,16 +31,20 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Microservice Architecture to handle scaling in different traffic, read, writes, logic, etc. 
     - CAP Theorem : Strong Consistency vs (Availability and Eventual Consistency)  *** Different parts of the system might have different Consistency and Availability 
     - Read/ Write Ratio: read heavy or write heavy system. Must choose different components -database/caching layer/broker/sharding based on that
-    - Low Latecy: low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
-    - Popular Event/ Peak hour/ Celebrity user/ Hot server/ Hot shard/ etc
+    - Request can be handled synchronously/asynchronously. 
+    - Low Latnecy: low latency for real time updates - messaging app, uber driver location updates, search through Database, etc
+    - Popular Event/ Peak hour/ Flash Sale / Celebrity user/ Hot server/ Hot shard/ etc
+    - Memory/disk based component selection(message queue, caching - redis has both option, database, etc). For scaling sometimes saving in memory is needed, in other cases storing in disk is needed.
     - Idempotency (Consider single event when multiple events are requested: multiple clicks to do transaction, ad-click, checkout button click, etc)
     - estimation:
         1) read throughput, write throughput (incoming read/write request per second)
         2) number of backend servers needed to handle requests request
         3) storage needed to write all data
+        4) cache needed for scaling reads
 
 
-    - Fault Tolerance( if server, database shard, network goes down)
+    - Fault Tolerance( if server, database shard, message broker, cache, any component goes down, network goes down)
+    - single point of failure detection and handle considering trades-off
     - if user goes offline
 
 
@@ -48,7 +52,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Polling, Long Lolling (not-persistent)
     - Websocket (persistent connections, bi-directional)
     - Server Sent Event (persistent connections)
-    - WebRtc (peer to peer connections)
+    - WebRtc (peer to peer connections, audio/video call)
 
 
     - Message Queue to receive messages asynchronosly: kafka, amazon SQS, rabbit MQ
@@ -57,13 +61,14 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - CDC (Change Data Capture) to forward the event of any change of data in the DB. (primary DB -> Elastic Search)
 
 
-    - Analytics aggregator to aggregate data in real-time: apache Spark, Flink (this system receives data from brokers-Kafka )
-    - Batch processing to aggregate data, process writes in batch using chron job or scheduler in every n (5, 10, 15, 60 minutes, 1 day, 1 week, etc) minutes (needs input file to batch process and generates output file)
+    - Analytics aggregator to aggregate data in real-time: Flink (this system receives data from brokers-Kafka )
+    - Batch processing to aggregate data (apache Spark), process writes in batch using chron job or scheduler in every n (5, 10, 15, 60 minutes, 1 day, 1 week, etc) minutes (needs input file to batch process and generates output file)
+    - As worker use dedicated server computer or Virtual environment like Container, Virtual Machine, etc,
     - Loggin, Monitoring, health check
 
     
     - System Security / DDoS attack / running user code, query in secured environment
-    - Rate limiting to save servers, databases, detect spammers, etc: fixed time window (minute 1, minute 2, etc), sliding window, etc
+    - Rate limiting(Token Bucket, Sliding Window, Fixed Window) to save servers, databases, detect spammers, etc: fixed time window (minute 1, minute 2, etc), sliding window, etc
     - Encryption of user personal data/location/credit card info etc.
 
     
@@ -83,7 +88,7 @@ https://leetcode.com/discuss/interview-question/system-design/5073436/System-Des
     - Encoding/decoding data
     - compress files specially media files(images, videos)
     - upload huge files by chunking (resumeable uploads)
-    - create file with different resolution to serve users in different scenarios(poor network, mobile network, low bandwith, etc)
+    - create video/image with different resolution to serve users in different scenarios(poor network, mobile network, low bandwith, etc)
     - deduplication of data
     
 
